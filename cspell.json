@@ -1,0 +1,13 @@
+{
+  "ignorePaths": ["package.json", "cspell.json", ".vscode", "out"],
+  "words": [
+    "commitlint",
+    "hgcheck",
+    "hgignore",
+    "intellij",
+    "mkdocs",
+    "nbundle",
+    "npmignore",
+    "pnpm"
+  ]
+}

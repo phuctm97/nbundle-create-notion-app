@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": "$ts-webpack-watch",
+      "label": "npm: start",
+      "detail": "Start building & watching in development mode",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

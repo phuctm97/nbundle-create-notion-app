@@ -1,62 +1,16 @@
-# Create Notion App &middot; [![CI](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml/badge.svg)](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml)
+# Create Notion App &middot; [![npm Version](https://img.shields.io/npm/v/create-notion-app?logo=npm)](https://www.npmjs.com/package/create-notion-app) [![CI](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml/badge.svg)](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml)
 
 Create [nbundle]-powered [Notion] apps with one command:
-
-<details open>
-<summary>yarn</summary>
 
 ```shell
 yarn create notion-app
 ```
 
-</details>
-
-<details>
-<summary>npm</summary>
-
-```shell
-npx create-notion-app
-```
-
-</details>
-
-<details>
-<summary>pnpm</summary>
-
-```shell
-pnpm create notion-app
-```
-
-</details>
-
 Or for a TypeScript project:
-
-<details open>
-<summary>yarn</summary>
 
 ```shell
 yarn create notion-app --ts
 ```
-
-</details>
-
-<details>
-<summary>npm</summary>
-
-```shell
-npx create-notion-app --ts
-```
-
-</details>
-
-<details>
-<summary>pnpm</summary>
-
-```shell
-pnpm create notion-app --ts
-```
-
-</details>
 
 ## Options
 

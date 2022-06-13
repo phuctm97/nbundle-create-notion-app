@@ -25,7 +25,7 @@ export default async function create(
   const example = `example${options.typescript ? "-ts" : ""}`;
 
   console.log(
-    `Downloading template ${chalk.cyan(example)}. This might take a moment.\n`
+    `\nDownloading template ${chalk.cyan(example)}. This might take a moment.\n`
   );
 
   await downloadAndExtractRepo(projectDirectory, {
@@ -36,7 +36,7 @@ export default async function create(
 
   await formatProject(projectDirectory);
 
-  console.log("Installing packages. This might take a couple of minutes.\n");
+  console.log("Installing packages. This might take up to a few minutes.\n");
 
   await installDependencies(projectDirectory);
 
@@ -69,6 +69,6 @@ export default async function create(
   console.log("We suggest that you begin by typing:\n");
   console.log(chalk.cyan("  cd"), cdPath);
   console.log(
-    `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}dev`)}\n`
+    `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}develop`)}\n`
   );
 }

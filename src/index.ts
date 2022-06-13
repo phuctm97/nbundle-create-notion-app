@@ -1,17 +1,41 @@
 import path from "path";
 import fs from "fs/promises";
+import chalk from "chalk";
+import updateCheck from "update-check";
 import { Command, Option } from "commander";
 
 import create from "./create";
 
-async function index() {
-  const program = new Command();
-
+async function getPkg() {
   const pkgJson = await fs.readFile(
     path.resolve(__dirname, "..", "package.json"),
     "utf8"
   );
-  const pkg = JSON.parse(pkgJson);
+  return JSON.parse(pkgJson);
+}
+
+async function checkForUpdates(): Promise<void> {
+  const pkg = await getPkg();
+  if (pkg.version === "0.0.0-SNAPSHOT") return;
+  const res = await updateCheck(pkg);
+  if (res?.latest) {
+    console.log(
+      `\n${chalk.yellow.bold(
+        `A new version of ${chalk.green.bold(
+          pkg.name
+        )} is available and required!`
+      )}\n\nRun ${chalk.cyan(
+        `yarn global add ${pkg.name}`
+      )} to update then try again.\n`
+    );
+    process.exit(1);
+  }
+}
+
+async function run() {
+  const program = new Command();
+
+  const pkg = await getPkg();
 
   program
     .name(pkg.name)
@@ -35,7 +59,9 @@ async function index() {
   await program.parseAsync();
 }
 
-index().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+checkForUpdates()
+  .then(run)
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

@@ -1,3 +1,9 @@
+**⚠️ This project is under development and is not ready for public use.**
+
+All `1.0.x` releases are considered `alpha` releases, are not stable, and may have breaking changes.
+
+---
+
 # Create Notion App &middot; [![npm Version](https://img.shields.io/npm/v/create-notion-app?logo=npm)](https://www.npmjs.com/package/create-notion-app) [![CI](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml/badge.svg)](https://github.com/nbundle/create-notion-app/actions/workflows/ci.yml)
 
 Create [nbundle]-powered [Notion] apps with one command:

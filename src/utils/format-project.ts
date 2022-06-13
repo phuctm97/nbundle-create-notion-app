@@ -22,7 +22,11 @@ export async function formatProject(projectDirectory: string): Promise<void> {
   const pkg = JSON.parse(await fs.readFile(pkgJsonPath, "utf8"));
   pkg.name = name;
   pkg.productName = name;
-  if (pkg.devDependencies) delete pkg.devDependencies;
+  pkg.devDependencies = Object.fromEntries(
+    Object.entries(pkg.devDependencies).filter(([key]) =>
+      key.startsWith("@nbundle/")
+    )
+  );
   if (pkg.scripts.prepare) delete pkg.scripts.prepare;
   await fs.writeFile(pkgJsonPath, JSON.stringify(pkg, null, 2), "utf8");
 }

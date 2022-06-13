@@ -19,7 +19,7 @@
     "nbundle-plugin",
     "nbundle-addon"
   ],
-  "license": "AGPL-3.0",
+  "license": "UNLICENSED",
   "repository": "https://github.com/nbundle/create-notion-app",
   "publishConfig": {
     "access": "public"

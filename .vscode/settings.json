@@ -7,8 +7,7 @@
   "files.trimFinalNewlines": true,
   "files.insertFinalNewline": true,
   "files.exclude": {
-    "**/node_modules": true,
-    "**/.webpack": true,
+    "node_modules": true,
     "yarn.lock": true,
     ".husky": true
   },

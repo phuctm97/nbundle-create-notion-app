@@ -15,6 +15,7 @@ jobs:
           node-version: 16
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn tsc --noEmit
       - run: yarn prettier --check .
       - run: yarn cspell --no-must-find-files '**'
       - run: yarn build

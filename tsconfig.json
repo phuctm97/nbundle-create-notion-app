@@ -1,9 +1,9 @@
 {
   "extends": "@tsconfig/node14",
   "compilerOptions": {
-    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": { "~/*": ["src/*"] }
   },
-  "exclude": ["out"]
+  "include": ["src"],
+  "exclude": ["node_modules", "out", "*.config.js"]
 }

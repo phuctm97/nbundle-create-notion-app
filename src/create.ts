@@ -36,9 +36,11 @@ export default async function create(
 
   await formatProject(projectDirectory);
 
-  console.log("Installing packages. This might take up to a few minutes.\n");
+  console.log("Installing packages. This might take up to a few minutes.");
 
   await installDependencies(projectDirectory);
+
+  console.log();
 
   if (await tryGitInit(projectDirectory)) {
     console.log("Initialized a git repository.\n");

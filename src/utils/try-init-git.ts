@@ -27,7 +27,7 @@ async function isInMercurialRepository(
 
 export async function tryGitInit(projectDirectory: string): Promise<boolean> {
   try {
-    await exec("git --version");
+    await exec("git --version", { cwd: projectDirectory });
     if (
       (await isInGitRepository(projectDirectory)) ||
       (await isInMercurialRepository(projectDirectory))

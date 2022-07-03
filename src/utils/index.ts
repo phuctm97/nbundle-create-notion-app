@@ -1,3 +1,4 @@
+export * from "./to-json";
 export * from "./is-error-like";
 export * from "./async-pipeline";
 export * from "./async-exec";

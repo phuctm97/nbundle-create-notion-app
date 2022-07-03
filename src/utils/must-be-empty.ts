@@ -32,7 +32,7 @@ export async function mustBeEmpty(directory: string): Promise<void> {
   if (conflicts.length === 0) return;
 
   console.error(
-    `The directory ${chalk.green(
+    `\nThe directory ${chalk.green(
       directory
     )} contains files that might conflict:\n`
   );

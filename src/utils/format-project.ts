@@ -3,6 +3,7 @@ import path from "path";
 import fetch from "node-fetch";
 import { customAlphabet } from "nanoid/async";
 import { lowercase, numbers } from "nanoid-dictionary";
+import { capitalCase } from "capital-case";
 
 import { toJson } from "./to-json";
 
@@ -36,7 +37,7 @@ export async function formatProject(projectDirectory: string): Promise<void> {
   const pkgJsonPath = path.join(projectDirectory, "package.json");
   const pkg = JSON.parse(await fs.readFile(pkgJsonPath, "utf8"));
   pkg.name = await createAppName();
-  pkg.productName = name;
+  pkg.productName = capitalCase(name);
   pkg.devDependencies = Object.fromEntries(
     Object.entries(pkg.devDependencies).filter(([key]) =>
       key.startsWith("@nbundle/")

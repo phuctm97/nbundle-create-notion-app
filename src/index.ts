@@ -2,8 +2,10 @@ import path from "path";
 import fs from "fs/promises";
 import chalk from "chalk";
 import updateCheck from "update-check";
+import prompts from "prompts";
 import { Command, Option } from "commander";
 
+import requireInviteCode from "./require-invite-code";
 import create from "./create";
 
 async function getPkg() {
@@ -33,16 +35,16 @@ async function checkForUpdates(): Promise<void> {
 }
 
 async function run() {
+  await requireInviteCode();
+
   const program = new Command();
-
   const pkg = await getPkg();
-
   program
     .name(pkg.name)
     .description(pkg.description)
     .version(pkg.version, "-v, -V, --version")
-    .arguments("<project-directory>")
-    .usage(`<project-directory> [options]`)
+    .arguments("[<project-directory>]")
+    .usage(`[<project-directory>] [options]`)
     .option("-t, --ts, --typescript", "initialize as a TypeScript project")
     .addOption(
       new Option(
@@ -50,12 +52,24 @@ async function run() {
         "initialize as a TypeScript project"
       ).hideHelp()
     )
-    .action((projectDirectory, opts) =>
-      create(path.resolve(projectDirectory), {
+    .action(async (optionalProjectDirectory, opts) => {
+      let projectDirectory = optionalProjectDirectory;
+      if (!projectDirectory) {
+        const { projectName } = await prompts({
+          name: "projectName",
+          type: "text",
+          message: "What is your project name?",
+        });
+        if (!projectName) {
+          console.error(chalk.red("Project name is required."));
+          process.exit(1);
+        }
+        projectDirectory = projectName;
+      }
+      await create(path.resolve(projectDirectory), {
         typescript: opts.ts || opts.typescript,
-      })
-    );
-
+      });
+    });
   await program.parseAsync();
 }
 

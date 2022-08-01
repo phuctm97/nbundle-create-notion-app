@@ -1,6 +1,8 @@
 > This project is in early access and requires an invite code to use.
 >
-> ⤷ [Sign up for early access](https://phuctm97.gumroad.com/l/nbundle-waitlist)
+> ⤷ [Sign up for early access](https://phuctm97.gumroad.com/l/nbundle-waitlist).
+
+---
 
 **⚠️ All `1.0.x` releases are `alpha` releases, are not stable, and may have breaking changes.**
 

@@ -26,9 +26,10 @@ yarn create notion-app --ts
 
 `create-notion-app` comes with the following options:
 
-| Option                     | Description                        |
-| -------------------------- | ---------------------------------- |
-| **-t, --ts, --typescript** | Initialize as a TypeScript project |
+| Option                     | Description                                                               |
+| -------------------------- | ------------------------------------------------------------------------- |
+| **-t, --ts, --typescript** | Initialize as a TypeScript project                                        |
+| **--devtool**              | Use default devtools (prettier, husky, lint-staged, commitlint, & cspell) |
 
 ## Contributing
 

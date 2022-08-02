@@ -53,8 +53,8 @@ async function run() {
       ).hideHelp()
     )
     .option(
-      "--keep-default-devtools",
-      "keep default devtools (prettier, husky, lint-staged, commitlint, & cspell)"
+      "--devtool",
+      "use default devtools (prettier, husky, lint-staged, commitlint, & cspell)"
     )
     .action(async (optionalProjectDirectory, opts) => {
       let projectDirectory = optionalProjectDirectory;
@@ -72,7 +72,7 @@ async function run() {
       }
       await create(path.resolve(projectDirectory), {
         typescript: opts.ts || opts.typescript,
-        keepDefaultDevtools: opts.keepDefaultDevtools,
+        devtool: opts.devtool,
       });
     });
   await program.parseAsync();

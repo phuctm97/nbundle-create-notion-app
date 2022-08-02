@@ -18,7 +18,7 @@ async function createAppName(): Promise<string> {
 }
 
 export interface FormatProjectOptions {
-  keepDefaultDevtools?: boolean;
+  devtool?: boolean;
 }
 
 export async function formatProject(
@@ -29,7 +29,7 @@ export async function formatProject(
     [
       "LICENSE",
       "yarn.lock",
-      ...(options?.keepDefaultDevtools
+      ...(options?.devtool
         ? []
         : [
             ".github",
@@ -45,7 +45,7 @@ export async function formatProject(
     )
   );
 
-  if (options?.keepDefaultDevtools) {
+  if (options?.devtool) {
     const cspellJsonPath = path.join(projectDirectory, "cspell.json");
     const cspell = JSON.parse(await fs.readFile(cspellJsonPath, "utf8"));
     cspell.words = cspell.words.filter(
@@ -60,7 +60,7 @@ export async function formatProject(
   pkg.name = await createAppName();
   pkg.productName = capitalCase(name);
   if (pkg.scripts.prepare) delete pkg.scripts.prepare;
-  if (!options?.keepDefaultDevtools) {
+  if (!options?.devtool) {
     pkg.devDependencies = Object.fromEntries(
       Object.entries(pkg.devDependencies).filter(([key]) =>
         key.startsWith("@nbundle/")

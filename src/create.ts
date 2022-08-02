@@ -13,7 +13,7 @@ import path from "path";
 
 export interface CreateOptions {
   typescript?: boolean;
-  keepDefaultDevtools?: boolean;
+  devtool?: boolean;
 }
 
 export default async function create(
@@ -38,7 +38,7 @@ export default async function create(
 
   await formatProject(projectDirectory, options);
 
-  if ((await tryGitInit(projectDirectory)) && options.keepDefaultDevtools) {
+  if ((await tryGitInit(projectDirectory)) && options.devtool) {
     const pkgJsonPath = path.join(projectDirectory, "package.json");
     const pkg = JSON.parse(await fs.readFile(pkgJsonPath, "utf8"));
     if (pkg.devDependencies.husky) {

@@ -52,6 +52,10 @@ async function run() {
         "initialize as a TypeScript project"
       ).hideHelp()
     )
+    .option(
+      "-d, --devtool",
+      "use default devtools (prettier, husky, lint-staged, commitlint, & cspell)"
+    )
     .action(async (optionalProjectDirectory, opts) => {
       let projectDirectory = optionalProjectDirectory;
       if (!projectDirectory) {
@@ -68,6 +72,7 @@ async function run() {
       }
       await create(path.resolve(projectDirectory), {
         typescript: opts.ts || opts.typescript,
+        devtool: opts.devtool,
       });
     });
   await program.parseAsync();

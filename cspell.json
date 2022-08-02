@@ -5,10 +5,12 @@
     "hgcheck",
     "hgignore",
     "intellij",
+    "minh",
     "mkdocs",
     "nbundle",
     "nolookalikes",
     "npmignore",
+    "phuc",
     "pnpm"
   ]
 }

@@ -7,11 +7,13 @@ import {
   formatProject,
   installDependencies,
   tryGitInit,
+  toJson,
 } from "./utils";
 import path from "path";
 
 export interface CreateOptions {
   typescript?: boolean;
+  keepDefaultDevtools?: boolean;
 }
 
 export default async function create(
@@ -34,17 +36,22 @@ export default async function create(
     branch: "main",
   });
 
-  await formatProject(projectDirectory);
+  await formatProject(projectDirectory, options);
+
+  if ((await tryGitInit(projectDirectory)) && options.keepDefaultDevtools) {
+    const pkgJsonPath = path.join(projectDirectory, "package.json");
+    const pkg = JSON.parse(await fs.readFile(pkgJsonPath, "utf8"));
+    if (pkg.devDependencies.husky) {
+      pkg.scripts.prepare = "husky install";
+      await fs.writeFile(pkgJsonPath, toJson(pkg), "utf8");
+    }
+  }
 
   console.log("Installing packages. This might take up to a few minutes.");
 
   await installDependencies(projectDirectory);
 
   console.log();
-
-  if (await tryGitInit(projectDirectory)) {
-    console.log("Initialized a git repository.\n");
-  }
 
   const packageManager = "yarn";
   const useYarn = packageManager === "yarn";

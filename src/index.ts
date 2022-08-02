@@ -53,7 +53,7 @@ async function run() {
       ).hideHelp()
     )
     .option(
-      "--devtool",
+      "-d, --devtool",
       "use default devtools (prettier, husky, lint-staged, commitlint, & cspell)"
     )
     .action(async (optionalProjectDirectory, opts) => {

@@ -29,7 +29,7 @@ yarn create notion-app --ts
 | Option                     | Description                                                               |
 | -------------------------- | ------------------------------------------------------------------------- |
 | **-t, --ts, --typescript** | Initialize as a TypeScript project                                        |
-| **--devtool**              | Use default devtools (prettier, husky, lint-staged, commitlint, & cspell) |
+| **-d, --devtool**          | Use default devtools (prettier, husky, lint-staged, commitlint, & cspell) |
 
 ## Contributing
 

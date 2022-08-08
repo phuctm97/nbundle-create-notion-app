@@ -65,6 +65,7 @@
     "nanoid-dictionary": "^4.3.0",
     "node-fetch": "^3.2.6",
     "open": "^8.4.0",
+    "param-case": "^3.0.4",
     "prettier": "^2.6.2",
     "prompts": "^2.4.2",
     "semantic-release": "^19.0.3",

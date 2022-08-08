@@ -67,5 +67,15 @@ export async function formatProject(
       )
     );
   }
-  await fs.writeFile(pkgJsonPath, toJson(pkg), "utf8");
+  await fs.writeFile(
+    pkgJsonPath,
+    toJson({
+      name: pkg.name,
+      version: pkg.version,
+      productName: pkg.productName,
+      description: pkg.description,
+      ...pkg,
+    }),
+    "utf8"
+  );
 }

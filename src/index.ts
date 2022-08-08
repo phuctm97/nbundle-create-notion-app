@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import chalk from "chalk";
 import updateCheck from "update-check";
 import prompts from "prompts";
+import { paramCase } from "param-case";
 import { Command, Option } from "commander";
 
 import requireInviteCode from "./require-invite-code";
@@ -69,6 +70,9 @@ async function run() {
           process.exit(1);
         }
         projectDirectory = projectName;
+      }
+      if (projectDirectory) {
+        projectDirectory = paramCase(projectDirectory);
       }
       await create(path.resolve(projectDirectory), {
         typescript: opts.ts || opts.typescript,

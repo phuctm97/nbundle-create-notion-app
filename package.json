@@ -68,7 +68,7 @@
     "param-case": "^3.0.4",
     "prettier": "^2.6.2",
     "prompts": "^2.4.2",
-    "semantic-release": "^19.0.3",
+    "semantic-release": "^20.1.1",
     "tar": "^6.1.11",
     "ts-loader": "^9.3.0",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
